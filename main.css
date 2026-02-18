@@ -1,0 +1,269 @@
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+:root {
+    --bg: #F7F5F2;
+    /* warm off-white for the page background */
+    --white: #FFFFFF;
+    /* cards and inputs */
+    --accent: #D97706;
+
+    --text-dark: #1C1917;
+
+    --text-muted: #78716C;
+
+    --border: #E7E5E4;
+
+    --sidebar: #1C1917;
+
+    --radius: 10px;
+
+}
+
+
+
+body {
+    font-family: Georgia, serif;
+    background-color: var(--bg);
+    color: var(--text-dark);
+    min-height: 100vh;
+}
+
+
+
+.appname {
+    margin-left: 200px;
+    padding: 24px 32px;
+    border-bottom: 1px solid var(--border);
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--text-dark);
+    background-color: var(--white);
+}
+
+
+.big-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: 100vh;
+    background-color: var(--sidebar);
+    padding: 80px 16px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+
+
+.featureslist li {
+    list-style: none;
+}
+
+
+.featureslist ol {
+    display: block;
+    color: #A8A29E;
+    font-size: 14px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.featureslist ol:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: var(--white);
+}
+
+
+#addtask,
+.my-tasks,
+.task-list {
+    margin-left: 200px;
+    padding: 0 40px;
+}
+
+
+#addtask {
+    display: flex;
+    gap: 8px;
+    padding-top: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+
+
+#addtask input {
+    flex: 1;
+    background-color: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 11px 14px;
+    font-size: 14px;
+    font-family: Georgia, serif;
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+#addtask input:focus {
+    border-color: var(--accent);
+}
+
+#addtask input::placeholder {
+    color: var(--text-muted);
+}
+
+
+#addtask button {
+    width: 44px;
+    height: 44px;
+    background-color: var(--accent);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: filter 0.2s ease;
+}
+
+#addtask button:hover {
+    filter: brightness(0.88);
+}
+
+
+
+.my-tasks {
+    padding-top: 28px;
+    padding-bottom: 12px;
+}
+
+.my-tasks h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+
+
+.task-list {
+    padding-bottom: 40px;
+}
+
+#list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+
+.task {
+    background-color: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.task:hover {
+    border-color: #C0B8B0;
+}
+
+
+
+
+.task .title {
+    flex: 1;
+    font-size: 14px;
+    color: var(--text-dark);
+}
+
+.task .date {
+    font-size: 12px;
+    color: var(--text-muted);
+    background-color: var(--bg);
+    padding: 3px 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+
+
+.task-checkbox {
+    position: relative;
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+}
+
+.task-checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin: 0;
+    z-index: 1;
+}
+
+/* Visible fake checkbox */
+.checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border);
+    border-radius: 5px;
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+}
+
+/* The tick inside — hidden until checked */
+.checkmark::after {
+    content: '✓';
+    font-size: 12px;
+    color: var(--white);
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+/* When checked → fill the fake checkbox with accent color */
+.task-checkbox input:checked~.checkmark {
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
+
+/* When checked → show the tick */
+.task-checkbox input:checked~.checkmark::after {
+    opacity: 1;
+}
+
+
+
+.task.done {
+    opacity: 0.65;
+}
+
+.task.done .title {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
